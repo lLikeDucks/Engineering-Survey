@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Mind Me</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer; /* Makes them want to click! */
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="rickrollVideo" autoplay muted loop playsinline>
+        <source src="RickrollVideo.mp4" type="video/mp4">
+    </video>
+
+    <audio id="rickrollAudio" loop>
+        <source src="RickrollAudio.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const video = document.getElementById('rickrollVideo');
+        const audio = document.getElementById('rickrollAudio');
+
+        // This function triggers as soon as the user clicks anywhere
+        document.body.addEventListener('click', function() {
+            // Unmute the video (optional if using separate MP3)
+            video.muted = false; 
+            
+            // Sync audio to the current time of the video
+            audio.currentTime = video.currentTime;
+            
+            // Play the audio
+            audio.play();
+            
+            console.log("Rickroll activated with audio.");
+        }, { once: true }); // 'once: true' ensures this only runs on the first click
+    </script>
+
+</body>
+</html>
